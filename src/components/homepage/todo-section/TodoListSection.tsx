@@ -1,12 +1,23 @@
-import { useState } from "react";
-import type { TodoFilterType } from "../../../lib/typescript/todo";
+import { useEffect, useState } from "react";
+import type { TodoFilterType, TodoType } from "../../../lib/typescript/todo";
 import { TodoGrid } from "./TodoGrid";
 import { useTodoStore } from "../../../zustand/store";
+import { useGetAllUserTodos } from "../../../lib/tanstack-query/todo";
 
 function TodoListSection() {
-    const todos = useTodoStore((state) => state.todos);
-    const todoFilter = useTodoStore((state) => state.filter);
+    const userId = localStorage.getItem("userId") as string;
+    
+    const {data, isFetched} = useGetAllUserTodos(userId);
 
+    let todos: TodoType[] = useTodoStore((state) => state.todos) as TodoType[];
+
+    useEffect(() => {
+        if(isFetched) {
+            useTodoStore.getState().setTodos(data.todos);
+        }
+    }, [isFetched]);
+
+    const todoFilter = useTodoStore((state) => state.filter);
     const [filter, setFilter] = useState<TodoFilterType>(todoFilter);
 
     function switchFilter(mode: TodoFilterType) {

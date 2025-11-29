@@ -1,4 +1,4 @@
-import { AddTodoSection } from "../components/homepage/AddTodoSection";
+import { AddTodoSection } from "../components/homepage/todo-section/AddTodoSection";
 import { TodoListSection } from "../components/homepage/todo-section/TodoListSection";
 
 function Home() {

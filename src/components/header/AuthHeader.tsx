@@ -1,8 +1,13 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 function AuthHeader() {
+    const navigate = useNavigate();
+    
     function handleLogout() {
-        console.log("User logged out.");
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userId");
+
+        navigate("/auth/signin");
     }
 
     return (

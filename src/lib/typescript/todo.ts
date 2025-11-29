@@ -5,14 +5,16 @@ export type TodoModeType = "View" | "Edit";
 export type TodoType = {
     _id?: string,
     content: string,
-    completed: boolean
+    completed: boolean,
+    userId?: string
 };
 
 export type InitialTodoStateType = {
     todos: TodoType[],
     filter: TodoFilterType,
+    setTodos: (todos: TodoType[]) => Promise<void>, 
     addTodo: (todo: TodoType) => Promise<void>,
-    saveTodo: (_id: string, content: string) => Promise<void>
-    deleteTodo: (_id: string) => Promise<void>,
+    saveTodo: () => Promise<void>
+    deleteTodo: () => Promise<void>,
     setCompleted: (_id: string, value: boolean) => Promise<void>
 };
