@@ -39,7 +39,7 @@ export const useGetAllUserTodos = (userId: string) =>
 
         return result;
     },
-    enabled: !!userId                  // only run if id exists
+    enabled: !!userId,              // only run if id exists
 });
 
 export const useMarkTodoCompleted = () => {

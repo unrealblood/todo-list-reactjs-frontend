@@ -36,7 +36,7 @@ function AddTodoSection() {
                     required: true
                 })} />
 
-                <button type="submit" disabled={addTodo.isPending} className="bg-blue-500 text-white py-2 px-4 rounded-full cursor-pointer bi-plus-square"></button>
+                <button type="submit" disabled={addTodo.isPending} className="bg-blue-500 text-white py-2 px-4 rounded-full cursor-pointer bi-plus-lg"></button>
             </form>
         </section>
     );

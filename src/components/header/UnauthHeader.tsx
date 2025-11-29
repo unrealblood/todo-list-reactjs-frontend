@@ -8,7 +8,7 @@ function UnauthHeader() {
             </div>
 
             <nav className="flex justify-center items-center gap-2">
-                <Link to="/auth/sign-in">Sign In</Link>
+                <Link to="/auth/signin">Sign In</Link>
                 <Link to="/auth/signup">Signup</Link>
             </nav>
         </header>

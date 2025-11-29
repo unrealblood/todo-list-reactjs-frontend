@@ -8,3 +8,8 @@ export type SignUpFormFields = {
     email: string,
     password: string
 };
+
+export type InitialAuthSateType = {
+  accessToken: string | null;
+  setAccessToken: (token: string | null) => void;
+}

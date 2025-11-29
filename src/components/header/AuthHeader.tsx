@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router";
+import { useAuthStore } from "../../zustand/store";
 
 function AuthHeader() {
     const navigate = useNavigate();
@@ -6,6 +7,8 @@ function AuthHeader() {
     function handleLogout() {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("userId");
+
+        useAuthStore.getState().setAccessToken(null);
 
         navigate("/auth/signin");
     }

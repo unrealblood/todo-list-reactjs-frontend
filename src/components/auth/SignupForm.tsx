@@ -43,7 +43,7 @@ function SignUpForm() {
                     <div className="flex flex-col justify-start items-start gap-2">
                         <label htmlFor="nameInput">Name</label>
                         
-                        <input type="text" id="nameInput" className="bg-gray-200 p-2 rounded-full" placeholder="Enter your full name" {...register("name", {
+                        <input type="text" id="nameInput" className="bg-gray-200 p-2 rounded-full w-[350px]" placeholder="Enter your full name" {...register("name", {
                             required: "Name is required"
                         },)} />
                     </div>
@@ -51,7 +51,7 @@ function SignUpForm() {
                     <div className="flex flex-col justify-start items-start gap-2">
                         <label htmlFor="emailInput">Email Address</label>
                         
-                        <input type="email" id="emailInput" className="bg-gray-200 p-2 rounded-full" placeholder="Enter your email address" {...register("email", {
+                        <input type="email" id="emailInput" className="bg-gray-200 p-2 rounded-full w-[350px]" placeholder="Enter your email address" {...register("email", {
                             required: "Email address is required",
                             validate: (value) => {
                                 if(!value.includes("@")) {
@@ -66,7 +66,7 @@ function SignUpForm() {
                     <div className="flex flex-col justify-start items-start gap-2">
                         <label htmlFor="passwordInput">Password</label>
                         
-                        <input type="password" id="passwordInput" className="bg-gray-200 p-2 rounded-full" placeholder="Enter your password" {...register("password", {
+                        <input type="password" id="passwordInput" className="bg-gray-200 p-2 rounded-full w-[350px]" placeholder="Enter your password" {...register("password", {
                             required: "Password is required",
                             validate: (value) => {
                                 if(value.length < 6) {

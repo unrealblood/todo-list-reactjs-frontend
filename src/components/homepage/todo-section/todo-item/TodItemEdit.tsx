@@ -39,7 +39,7 @@ function TodoItemEdit({todo, length, index, setMode}: TodoItemEditProps) {
             })} />
 
             <div className="flex justify-end items-center gap-2 pl-4">
-                <button type="submit" className="bi-check-square bg-blue-500 text-white text-xl cursor-pointer py-2 px-4 rounded-full"></button>
+                <button type="submit" className="bi-check-lg bg-blue-500 text-white text-xl cursor-pointer py-2 px-4 rounded-full"></button>
             </div>
         </form>
     );

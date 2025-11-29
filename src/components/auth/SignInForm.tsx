@@ -38,7 +38,7 @@ function SignInForm() {
                     <div className="flex flex-col justify-start items-start gap-2">
                         <label htmlFor="emailInput">Email Address</label>
                         
-                        <input type="email" id="emailInput" className="bg-gray-200 p-2 rounded-full" placeholder="Enter your email address" {...register("email", {
+                        <input type="email" id="emailInput" className="bg-gray-200 p-2 rounded-full w-[350px]" placeholder="Enter your email address" {...register("email", {
                             required: "Email address is required",
                             validate: (value) => {
                                 if(!value.includes("@")) {
@@ -53,7 +53,7 @@ function SignInForm() {
                     <div className="flex flex-col justify-start items-start gap-2">
                         <label htmlFor="passwordInput">Password</label>
                         
-                        <input type="password" id="passwordInput" className="bg-gray-200 p-2 rounded-full" placeholder="Enter your password" {...register("password", {
+                        <input type="password" id="passwordInput" className="bg-gray-200 p-2 rounded-full w-[350px]" placeholder="Enter your password" {...register("password", {
                             required: "Password is required",
                             validate: (value) => {
                                 if(value.length < 6) {
@@ -63,6 +63,10 @@ function SignInForm() {
                                 return true;
                             }
                         })} />
+                    </div>
+
+                    <div className="flex flex-col justify-start items-start gap-2 mt-2">
+                        <Link to="/auth/forgot-password" className="underline">Forgot password?</Link>
                     </div>
 
                     {errors.email && (<p className="text-red-500">{errors.email.message}</p>)}
