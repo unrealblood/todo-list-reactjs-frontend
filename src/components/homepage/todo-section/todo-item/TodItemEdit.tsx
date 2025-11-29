@@ -3,6 +3,7 @@ import type { TodoModeType, TodoType } from "../../../../lib/typescript/todo";
 import { useTodoStore } from "../../../../zustand/store";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import type { UpdateTodoFieldsType } from "../../../../lib/react-hook-form/add-todo-form";
+import { useUpdateTodo } from "../../../../lib/tanstack-query/todo";
 
 interface TodoItemEditProps {
     length: number,
@@ -18,8 +19,16 @@ function TodoItemEdit({todo, length, index, setMode}: TodoItemEditProps) {
         }
     });
 
+    const updateTodo = useUpdateTodo();
+
     function handleUpdateTodo(data: UpdateTodoFieldsType): SubmitHandler<UpdateTodoFieldsType> {
+        updateTodo.mutate({
+            _id: todo._id!,
+            content: data.content
+        });
+
         useTodoStore.getState().saveTodo(todo._id!, data.content);
+        
         setMode("View");
     }
 

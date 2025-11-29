@@ -67,3 +67,29 @@ export const useMarkTodoCompleted = () => {
         }
     });
 }
+
+export const useUpdateTodo = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: async ({_id, content}: {_id: string, content: string}) => {
+            const res = await fetch("http://localhost:5000/todos/update-todo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({_id, content}),
+            });
+
+            const result = await res.json();
+
+            if (!res.ok) throw new Error("Failed to update todo");
+
+            return result;
+        },
+
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["update-todo"] });
+        }
+    });
+}
