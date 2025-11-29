@@ -74,7 +74,7 @@ export const useUpdateTodo = () => {
     return useMutation({
         mutationFn: async ({_id, content}: {_id: string, content: string}) => {
             const res = await fetch("http://localhost:5000/todos/update-todo", {
-                method: "POST",
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -93,3 +93,24 @@ export const useUpdateTodo = () => {
         }
     });
 }
+
+export const useDeleteTodo = (todoId: string) => {
+    const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async () => {
+        const res = await fetch(`http://localhost:5000/todos/delete-todo/${todoId}`, {
+            method: "DELETE"
+        });
+
+        const result = await res.json();
+
+        if (!res.ok) throw new Error("Failed to update todo");
+
+        return result;
+    },
+
+    onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["delete-todo"] });
+    }
+})};

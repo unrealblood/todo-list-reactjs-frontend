@@ -15,6 +15,6 @@ export type InitialTodoStateType = {
     setTodos: (todos: TodoType[]) => Promise<void>, 
     addTodo: (todo: TodoType) => Promise<void>,
     saveTodo: (_id: string, content: string) => Promise<void>
-    deleteTodo: () => Promise<void>,
+    deleteTodo: (_id: string) => Promise<void>,
     setCompleted: (_id: string, value: boolean) => Promise<void>
 };

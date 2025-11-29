@@ -13,7 +13,8 @@ export const useTodoStore = create<InitialTodoStateType>((set) => ({
     saveTodo: async (_id: string, content: string) => {
         set((state) => ({todos: state.todos.map((todo) => (todo._id === _id) ? {...todo, content} : todo)}));
     },
-    deleteTodo: async () =>{
+    deleteTodo: async (_id: string) => {
+        set((state) => ({todos: state.todos.filter((todo) => (todo._id !== _id))}));
     },
     setCompleted: async (_id, value) => {
         set((state) => ({todos: state.todos.map((todo) => (todo._id === _id) ? {...todo, completed: value} : todo)}));

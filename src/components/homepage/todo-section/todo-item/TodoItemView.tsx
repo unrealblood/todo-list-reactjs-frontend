@@ -1,7 +1,7 @@
 import { useState, type Dispatch, type SetStateAction } from "react";
 import type { TodoModeType, TodoType } from "../../../../lib/typescript/todo";
 import { useTodoStore } from "../../../../zustand/store";
-import { useMarkTodoCompleted } from "../../../../lib/tanstack-query/todo";
+import { useDeleteTodo, useMarkTodoCompleted } from "../../../../lib/tanstack-query/todo";
 
 interface TodoItemViewProps {
     length: number,
@@ -12,6 +12,7 @@ interface TodoItemViewProps {
 
 function TodoItemView({length, index, setMode, todo}: TodoItemViewProps) {
     const markTodoCompleted = useMarkTodoCompleted();
+    const delTodo = useDeleteTodo(todo._id!);
 
     const [isCompleted, setIsCompleted] = useState<boolean>(todo.completed);
 
@@ -26,8 +27,10 @@ function TodoItemView({length, index, setMode, todo}: TodoItemViewProps) {
         setIsCompleted(!isCompleted);
     }
 
-    function deleteTodo() {
-        useTodoStore((state) => (state.deleteTodo(todo._id!)));
+    async function deleteTodo() {
+        await delTodo.mutateAsync();
+
+        useTodoStore.getState().deleteTodo(todo._id!);
     }
 
     return (
