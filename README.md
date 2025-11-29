@@ -1,4 +1,4 @@
-This is a [React.js](https://react.dev/) internship project currently in development and not hosted on any server.
+This is a [React.js](https://react.dev/) internship project (ToDo List) frontend, currently in development and not hosted on any server.
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ npm run dev
 ```
 To start the dev server.
 
-3. Open [http://localhost:5173](http://localhost:5173) with your browser to see the project website.
+3. Now, open [http://localhost:5173](http://localhost:5173) along with nodejs and expressjs backend which is here: [Todo List backend](https://github.com/unrealblood/internship-project-todo-list-reactjs-backend/) in your browser to see the project website.
 
 ## About Project
 This project is made by [Shubham Singh](https://github.com/unrealblood)
