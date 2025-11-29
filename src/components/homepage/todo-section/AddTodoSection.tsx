@@ -8,16 +8,17 @@ function AddTodoSection() {
 
     const addTodo = useAddTodo();
     
-    function handleAddTodo(data: AddTodoFormFieldsType): SubmitHandler<AddTodoFormFieldsType> {
+    async function handleAddTodo(data: AddTodoFormFieldsType): SubmitHandler<AddTodoFormFieldsType> {
         const userId = localStorage.getItem("userId");
         if(userId !== null) {
-            addTodo.mutate({
+            const result = await addTodo.mutateAsync({
                 userId,
                 content: data.content,
                 completed: false,
             });
 
             useTodoStore.getState().addTodo({
+                _id: result.insertedId,
                 userId,
                 content: data.content,
                 completed: false
